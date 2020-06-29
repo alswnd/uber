@@ -8,5 +8,8 @@
   },
   "scripts": {
     "dev": "cd src && nodemon --exec ts-node index.ts -e ts, graphql"
+  },
+  "dependencies": {
+    "graphql-yoga": "^1.18.3"
   }
 }
