@@ -4,15 +4,15 @@
     "nodemon": "^2.0.4",
     "ts-node": "^8.10.2",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "@types/cors": "^2.8.6",
+    "@types/helmet": "^0.0.47",
+    "@types/morgan": "^1.9.1"
   },
   "scripts": {
     "dev": "cd src && nodemon --exec ts-node index.ts -e ts, graphql"
   },
   "dependencies": {
-    "@types/cors": "^2.8.6",
-    "@types/helmet": "^0.0.47",
-    "@types/morgan": "^1.9.1",
     "cors": "^2.8.5",
     "graphql-yoga": "^1.18.3",
     "helmet": "^3.23.3",
