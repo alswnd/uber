@@ -10,6 +10,9 @@
     "dev": "cd src && nodemon --exec ts-node index.ts -e ts, graphql"
   },
   "dependencies": {
-    "graphql-yoga": "^1.18.3"
+    "cors": "^2.8.5",
+    "graphql-yoga": "^1.18.3",
+    "helmet": "^3.23.3",
+    "morgan": "^1.10.0"
   }
 }
