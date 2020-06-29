@@ -4,10 +4,7 @@
     "nodemon": "^2.0.4",
     "ts-node": "^8.10.2",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.9.5",
-    "@types/cors": "^2.8.6",
-    "@types/helmet": "^0.0.47",
-    "@types/morgan": "^1.9.1"
+    "typescript": "^3.9.5"
   },
   "scripts": {
     "dev": "cd src && nodemon --exec ts-node index.ts -e ts, graphql"
