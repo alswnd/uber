@@ -1,10 +1,10 @@
 type Query {
   sayBye: String!
-  sayHello: String!
+  sayHello(name: String): SayHelloResponse!
 }
 
 # these types must be known by typescript.
-type Greeting {
+type SayHelloResponse {
   text: String!
   error: Boolean!
 }
