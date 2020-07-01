@@ -1,5 +1,7 @@
 import app from "./app";
+import { createConnection } from "typeorm";
 import { Options } from "graphql-yoga";
+import ConnectionOptions from "./ormConfig";
 
 const PORT: number | string = process.env.PORT || 4000;
 const PLAYGROUND_ENDPOINT: string = "/playground";
@@ -13,4 +15,10 @@ const appOptions: Options = {
 
 const handleAppStart = () => console.log(`Listening on port ${PORT}`);
 
-app.start(appOptions, handleAppStart);
+/**
+ * connect to database first, and then start app.
+ * @param ConnectionOptions : { postgres, uber, database, endpoint ... }
+ */
+createConnection(ConnectionOptions).then(() => {
+  app.start(appOptions, handleAppStart);
+});
