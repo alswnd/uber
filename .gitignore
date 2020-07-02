@@ -1,1 +1,4 @@
 node_modules
+
+# dot env environment variables file
+.env

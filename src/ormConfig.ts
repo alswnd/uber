@@ -11,10 +11,13 @@ const ConnectionOptions: ConnectionOptions = {
   // where model files are.
   entities: ["entities/*.*"],
 
-  // if not process.env.DB_ENDPOINT, then localhost
-  host: process.env.DB_ENDPOINT || "localhost",
-
   port: 5432,
+
+  /**
+   * @description code below is replaced by "dotenv" in index.ts and .env
+   */
+  // if not process.env.DB_ENDPOINT, then localhost
+  host: process.env.DB_ENDPOINT || "localhost", // this is a not good way.
   username: process.env.DB_USERNAME || "minjungkim",
   password: process.env.DB_PASSWORD || "",
 };
