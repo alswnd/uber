@@ -10,7 +10,15 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  BeforeInsert,
+  BeforeUpdate,
 } from "typeorm";
+import bcrypt from "bcrypt";
+
+/**
+ * @BRYCPT_ROUNDS : how many times will rounds.
+ */
+const BCRYPT_ROUNDS = 10;
 
 @Entity()
 class User extends BaseEntity {
@@ -78,6 +86,26 @@ class User extends BaseEntity {
    */
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
+  }
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  /**
+   * @async returns Promise, and Promise returns void.
+   */
+  async savePassword(): Promise<void> {
+    if (this.password) {
+      const hashedPassword = await this.hashPassword(this.password);
+      this.password = hashedPassword;
+    }
+  }
+
+  /**
+   * it takes some time, so we need to return @Promise
+   * @param password 
+   */
+  private hashPassword(password: string): Promise<string> {
+    return bcrypt.hash(password, BCRYPT_ROUNDS);
   }
 }
 
