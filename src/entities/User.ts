@@ -50,6 +50,35 @@ class User extends BaseEntity {
 
   @UpdateDateColumn()
   updatedAt: String;
+
+  @Column({ type: "boolean", default: false })
+  isDriving: boolean;
+
+  @Column({ type: "boolean", default: false })
+  isRiding: boolean;
+
+  @Column({ type: "boolean", default: false })
+  isTaken: boolean;
+
+  /**
+   * @description we use double precision as float in graphQL.
+   */
+  @Column({ type: "double precision" })
+  lastLng: number;
+
+  @Column({ type: "double precision" })
+  lastLat: number;
+
+  @Column({ type: "double precision" })
+  lastOrientation: number;
+
+  /**
+   * @method fullName()
+   * @return_type string
+   */
+  get fullName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
 }
 
 export default User;

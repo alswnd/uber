@@ -3,12 +3,14 @@ import { ConnectionOptions } from "typeorm";
 const ConnectionOptions: ConnectionOptions = {
   type: "postgres",
   database: "uber",
+
+  // synchronize whenever server starts.
   synchronize: true,
 
   // write histories
   logging: true,
 
-  // where model files are.
+  // where model files are, automatically.
   entities: ["entities/*.*"],
 
   port: 5432,
