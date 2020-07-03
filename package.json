@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/cors": "^2.8.6",
     "@types/helmet": "^0.0.47",
     "@types/morgan": "^1.9.1",
