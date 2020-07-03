@@ -1,4 +1,4 @@
-Type User {
+type User {
     # ! means required 
     id: Int!
     email: String
