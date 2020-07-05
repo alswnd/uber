@@ -15,14 +15,14 @@ Cloning Uber
 
 ### Authetication
 - [x] Generate JWT
-- [ ] Verify JWT
+- [x] Verify JWT
 
 ---
 
 ### Private Resolvers:
 
-- [ ] Verify Email
 - [ ] Get my Profile
+- [ ] Verify Email
 - [ ] Update my Profile
 - [ ] Toggle Driving Mode
 - [ ] Report Location / Orientation

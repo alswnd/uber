@@ -21,6 +21,7 @@ class App {
        */
       context: (req) => {
         return {
+          // request that contains user
           req: req.request,
         };
       },
@@ -57,6 +58,7 @@ class App {
       const user = await decodeJWT(token);
 
       if (user) {
+        // put request(header).user user
         req.user = user;
       } else {
         req.user = undefined;
