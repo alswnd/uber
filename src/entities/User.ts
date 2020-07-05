@@ -12,8 +12,12 @@ import {
   UpdateDateColumn,
   BeforeInsert,
   BeforeUpdate,
+  ManyToOne,
+  OneToMany,
 } from "typeorm";
 import bcrypt from "bcrypt";
+import Chat from "./Chat";
+import Message from "./Message";
 
 /**
  * @BRYCPT_ROUNDS : how many times will rounds.
@@ -73,6 +77,12 @@ class User extends BaseEntity {
 
   @Column({ type: "double precision" })
   lastOrientation: number;
+
+  @ManyToOne((type) => Chat, (chat) => chat.participants)
+  chat: Chat;
+
+  @OneToMany((type) => Message, (messages) => messages.user)
+  messages: Message[];
 
   @CreateDateColumn()
   createdAt: string;

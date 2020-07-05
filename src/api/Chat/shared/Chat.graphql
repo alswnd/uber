@@ -1,0 +1,9 @@
+type Chat {
+  id: Int!
+  
+  # relationship with Chat.graphql
+  messages: [Message]! # has many messages (one to many)
+  participants: [User]! # has many users
+  createdAt: String!
+  updatedAt: String
+}
