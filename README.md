@@ -8,15 +8,19 @@ Cloning Uber
 - [x] Sign In / Sign Up with Facebook
 - [x] Sign In with Email
 - [x] Start Phone Number Verification
-- [ ] Complete Phone Number Verification
+- [x] Complete Phone Number Verification
 - [ ] Sign Up with Email
+
+---
+
+### Authetication
+- [ ] Generate JWT
+- [ ] Verify JWT
 
 ---
 
 ### Private Resolvers:
 
-- [ ] Generate JWT
-- [ ] Verify JWT
 - [ ] Verify Email
 - [ ] Get my Profile
 - [ ] Update my Profile
