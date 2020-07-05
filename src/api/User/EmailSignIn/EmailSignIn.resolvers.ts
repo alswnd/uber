@@ -3,7 +3,7 @@ import {
   EmailSignInMutationArgs,
   EmailSignInResponse,
 } from "../../../types/graph";
-import User from "src/entities/User";
+import User from "../../../entities/User";
 
 const resolvers: Resolvers = {
   Mutation: {

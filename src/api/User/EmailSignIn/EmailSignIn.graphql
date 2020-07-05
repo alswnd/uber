@@ -4,6 +4,7 @@ type EmailSignInResponse {
   token: String
 }
 
+# Mutation means that you gonna modify database
 type Mutation {
   EmailSignIn(email: String!, password: String!): EmailSignInResponse!
 }
