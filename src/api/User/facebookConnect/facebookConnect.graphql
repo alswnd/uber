@@ -1,6 +1,6 @@
 type FacebookConnectResponse {
   ok: Boolean!
-  eror: String # if error
+  error: String # if error
   token: String # give user a token if verified
 }
 
