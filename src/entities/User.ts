@@ -18,7 +18,6 @@ import {
 import bcrypt from "bcrypt";
 import Chat from "./Chat";
 import Message from "./Message";
-import Verification from "./Verification";
 import Ride from "./Ride";
 
 /**
@@ -88,9 +87,6 @@ class User extends BaseEntity {
 
   @OneToMany((type) => Message, (messages) => messages.user)
   messages: Message[];
-
-  // @OneToMany((type) => Verification, (verification) => verification.user)
-  // verifications: Verification[];
 
   @OneToMany((type) => Ride, (ride) => ride.passenger)
   ridesAsPassenger: Ride[];

@@ -14,13 +14,32 @@ const resolvers: Resolvers = {
       const { phoneNumber } = args;
 
       try {
+        /**
+         * @const existingVerification
+         * @value Verification object | undefined
+         */
         const existingVerification = await Verification.findOne({
           payload: phoneNumber,
         });
 
         if (existingVerification) {
-            existingVerification.remove();
+          /**
+           * @method remove() : in BaseEntity
+           */
+          existingVerification.remove();
         }
+
+        const newVerification = await Verification.create({
+          /**
+           * below @object is required to create new Verification object.
+           * @refer Verification.ts
+           */
+          payload: phoneNumber,
+          target: "PHONE",
+        }).save();
+        /**
+         * @todo send sms
+         */
       } catch (error) {
         return {
           ok: false,
