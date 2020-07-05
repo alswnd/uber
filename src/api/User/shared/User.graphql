@@ -11,14 +11,14 @@ type User {
   phoneNumber: String
   veifiedPhoneNumber: Boolean!
   profilePhoto: String # url
-  createdAt: String
-  updatedAt: String
   isDriving: Boolean!
   isRiding: Boolean!
   isTaken: Boolean!
   lastLng: Float
   lastLat: Float
   lastOrientation: Float
+  createdAt: String!
+  updatedAt: String
 }
 
 type Query {
