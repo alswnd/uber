@@ -53,12 +53,6 @@ class User extends BaseEntity {
   @Column({ type: "text" })
   profilePhoto: string;
 
-  @CreateDateColumn()
-  createdAt: string;
-
-  @UpdateDateColumn()
-  updatedAt: String;
-
   @Column({ type: "boolean", default: false })
   isDriving: boolean;
 
@@ -79,6 +73,12 @@ class User extends BaseEntity {
 
   @Column({ type: "double precision" })
   lastOrientation: number;
+
+  @CreateDateColumn()
+  createdAt: string;
+
+  @UpdateDateColumn()
+  updatedAt: String;
 
   /**
    * @method fullName()
