@@ -6,14 +6,19 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { VerificationTarget } from "src/types/types";
 
 @Entity()
 class Verification extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: "text" })
-  target: string;
+  /**
+   * @name target
+   * @description this can be a phone or email. so using ts file to verify type.
+   */
+  @Column({ type: "text", enum: ["PHONE", "EMAIL"] })
+  target: VerificationTarget;
 
   @Column({ type: "text" })
   payload: string;

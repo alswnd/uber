@@ -1,10 +1,44 @@
 type Query {
   sayBye: String!
   sayHello(name: String): SayHelloResponse!
+  user: User
 }
 
 # these types must be known by typescript.
 type SayHelloResponse {
   text: String!
   error: Boolean!
+}
+
+type User {
+  # ! means required
+  id: Int!
+  email: String
+  veifiedEmail: Boolean!
+  firstName: String!
+  lastName: String!
+  fullName: String
+  age: Int
+  password: String
+  phoneNumber: String
+  veifiedPhoneNumber: Boolean!
+  profilePhoto: String
+  createdAt: String
+  updatedAt: String
+  isDriving: Boolean!
+  isRiding: Boolean!
+  isTaken: Boolean!
+  lastLng: Float
+  lastLat: Float
+  lastOrientation: Float
+}
+
+type Verification {
+  id: Int!
+  target: String!
+  payload: String!
+  key: String!
+  used: Boolean!
+  createdAt: String!
+  updatedAt: String!
 }
