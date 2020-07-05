@@ -101,8 +101,16 @@ class User extends BaseEntity {
   }
 
   /**
+   * @function comparePassword : verify if it is valid password
+   * @param password password user input
+   */
+  public comparePassword(password: string): Promise<boolean> {
+    return bcrypt.compare(password, this.password);
+  }
+
+  /**
    * it takes some time, so we need to return @Promise
-   * @param password 
+   * @param password
    */
   private hashPassword(password: string): Promise<string> {
     return bcrypt.hash(password, BCRYPT_ROUNDS);
