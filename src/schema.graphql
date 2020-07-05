@@ -1,13 +1,58 @@
-type Query {
-  sayBye: String!
-  sayHello(name: String): SayHelloResponse!
-  user: User
+type Chat {
+  id: Int!
+  # relationship with Chat.graphql
+  messages: [Message]!
+  participants: [User]!
+  createdAt: String!
+  updatedAt: String
 }
 
-# these types must be known by typescript.
-type SayHelloResponse {
+type Message {
+  id: Int!
   text: String!
-  error: Boolean!
+  chat: Chat!
+  user: User!
+  createdAt: String!
+  updatedAt: String
+}
+
+type Place {
+  id: Int!
+  name: String!
+  lat: Float!
+  lng: Float!
+  address: String!
+  isFav: Boolean!
+  createdAt: String!
+  updatedAt: String
+}
+
+type Ride {
+  id: Int!
+  status: String!
+  pickUpAddress: String!
+  pickUpLat: Float!
+  pickUpLng: Float!
+  dropOffAddress: String!
+  dropOffLat: Float!
+  dropOffLng: Float!
+  price: Float!
+  distance: String!
+  duration: String!
+  driver: User!
+  passenger: User!
+  createdAt: String!
+  updatedAt: String
+}
+
+type FacebookConnectResponse {
+  ok: Boolean!
+  eror: String
+  token: String
+}
+
+type Mutation {
+  FacebookConnect(firstName: String!, lastName: String!, email: String, fbId: String!): FacebookConnectResponse!
 }
 
 type User {
@@ -23,14 +68,24 @@ type User {
   phoneNumber: String
   veifiedPhoneNumber: Boolean!
   profilePhoto: String
-  createdAt: String
-  updatedAt: String
   isDriving: Boolean!
   isRiding: Boolean!
   isTaken: Boolean!
   lastLng: Float
   lastLat: Float
   lastOrientation: Float
+  fbId: String
+  chat: Chat
+  messages: [Message]
+  verifications: [Verification]
+  ridesAsPassenger: [Ride]
+  ridesAsDriver: [Ride]
+  createdAt: String!
+  updatedAt: String
+}
+
+type Query {
+  user: User
 }
 
 type Verification {
@@ -39,6 +94,7 @@ type Verification {
   payload: String!
   key: String!
   used: Boolean!
+  user: User!
   createdAt: String!
-  updatedAt: String!
+  updatedAt: String
 }
