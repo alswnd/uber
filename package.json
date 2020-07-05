@@ -3,6 +3,7 @@
     "@types/bcrypt": "^3.0.0",
     "@types/cors": "^2.8.6",
     "@types/helmet": "^0.0.47",
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/morgan": "^1.9.1",
     "@types/node": "^14.0.14",
     "@types/twilio": "^2.11.0",
