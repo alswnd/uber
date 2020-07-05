@@ -47,10 +47,10 @@ class User extends BaseEntity {
   @Column({ type: "int", nullable: true })
   age: number;
 
-  @Column({ type: "text" })
+  @Column({ type: "text", nullable: true })
   password: string;
 
-  @Column({ type: "text" })
+  @Column({ type: "text", nullable: true })
   phoneNumber: string;
 
   @Column({ type: "boolean", default: false })
@@ -71,13 +71,13 @@ class User extends BaseEntity {
   /**
    * @description we use double precision as float in graphQL.
    */
-  @Column({ type: "double precision" })
+  @Column({ type: "double precision", default: 0 })
   lastLng: number;
 
-  @Column({ type: "double precision" })
+  @Column({ type: "double precision", default: 0 })
   lastLat: number;
 
-  @Column({ type: "double precision" })
+  @Column({ type: "double precision", default: 0 })
   lastOrientation: number;
 
   @Column({ type: "text", nullable: true })

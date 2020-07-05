@@ -26,7 +26,7 @@ const resolvers: Resolvers = {
           return {
             ok: true,
             error: null,
-            token: "" /** @todo */,
+            token: "already user" /** @todo */,
           };
         }
       } catch (error) {
@@ -58,7 +58,7 @@ const resolvers: Resolvers = {
         return {
           ok: true,
           error: null,
-          token: "" /** @todo */,
+          token: "created user" /** @todo */,
         };
       } catch (error) {
         return {
