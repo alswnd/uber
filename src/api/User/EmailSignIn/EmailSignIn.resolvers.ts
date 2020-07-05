@@ -1,9 +1,10 @@
-import { Resolvers } from "src/types/resolvers";
 import {
   EmailSignInMutationArgs,
   EmailSignInResponse,
 } from "../../../types/graph";
 import User from "../../../entities/User";
+import { Resolvers } from "../../../types/resolvers";
+import createJWT from "../../../utils/create.JWT";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -35,10 +36,12 @@ const resolvers: Resolvers = {
 
         // user input password verified
         if (checkPassword) {
+          const token = createJWT(user.id);
+
           return {
             ok: true,
             error: null,
-            token: "password verified",
+            token,
           };
         } else {
           return {

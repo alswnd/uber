@@ -39,9 +39,6 @@ const resolvers: Resolvers = {
           target: "PHONE",
         }).save();
 
-        // test
-        console.log(newVerification);
-
         /**
          * send verification code
          */

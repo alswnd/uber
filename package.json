@@ -13,7 +13,8 @@
     "nodemon": "^2.0.4",
     "ts-node": "^8.10.2",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "dotenv": "^8.2.0"
   },
   "scripts": {
     "predev": "yarn run types",
@@ -25,7 +26,6 @@
     "bcrypt": "^5.0.0",
     "class-validator": "^0.12.2",
     "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
     "graphql-tools": "^6.0.11",
     "graphql-yoga": "^1.18.3",
     "helmet": "^3.23.3",
