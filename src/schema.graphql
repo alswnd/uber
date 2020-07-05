@@ -45,16 +45,24 @@ type Ride {
   updatedAt: String
 }
 
-type EmailSignInResponse {
+type CompletPhoneNumberVerificationResponse {
   ok: Boolean!
   error: String
+  # for existing user
   token: String
 }
 
 type Mutation {
+  CompletPhoneNumberVerification(phoneNumber: String!, key: String!): CompletPhoneNumberVerificationResponse!
   EmailSignIn(email: String!, password: String!): EmailSignInResponse!
   FacebookConnect(firstName: String!, lastName: String!, email: String, fbId: String!): FacebookConnectResponse!
   StartPhoneVerification(phoneNumber: String!): StartPhoneVerificationResponse!
+}
+
+type EmailSignInResponse {
+  ok: Boolean!
+  error: String
+  token: String
 }
 
 type FacebookConnectResponse {
@@ -106,6 +114,7 @@ type Verification {
   target: String!
   payload: String!
   key: String!
+  verified: Boolean!
   createdAt: String!
   updatedAt: String
 }
