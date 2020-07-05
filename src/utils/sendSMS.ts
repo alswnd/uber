@@ -1,12 +1,17 @@
 import Twilio from "twilio";
+import dotenv from "dotenv";
 
-const twilioClient = Twilio(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
+dotenv.config();
+
+const twilioClient = Twilio(
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_TOKEN
+);
 
 /**
- * sendSMS()
- * @param to receiver
- * @param body body
- * @description send any messages
+ * send any messages
+ * @param {string} to receiver
+ * @param {string} body body
  */
 export const sendSMS = (to: string, body: string) => {
   /**
@@ -21,10 +26,9 @@ export const sendSMS = (to: string, body: string) => {
 };
 
 /**
- * sendVerificationSMS()
- * @param to
- * @param key
  * send verification key with @function sendSMS()
+ * @param {string} to
+ * @param {string} key
  */
 export const sendVerificationSMS = (to: string, key: string) =>
   sendSMS(to, `Your verification key is: ${key}`);
