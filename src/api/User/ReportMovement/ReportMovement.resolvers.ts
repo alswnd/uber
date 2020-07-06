@@ -17,12 +17,16 @@ const resolvers: Resolvers = {
       ): Promise<ReportMovementResponse> => {
         const user: User = req.user;
         const notNull = cleanNullArgs(args);
-        
+
         try {
+          // it doesnt return User
           await User.update({ id: user.id }, { ...notNull });
 
+          // so get User like this
+          const updatedUser = await User.findOne({ id: user.id });
+
           // payload : DriversSubscription should be same with DriversSubscription.graphql
-          pubSub.publish("driverUpdate", { DriversSubscription: user });
+          pubSub.publish("driverUpdate", { DriversSubscription: updatedUser });
 
           return {
             ok: true,
