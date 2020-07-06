@@ -25,8 +25,8 @@ Cloning Uber
 - [x] Request Email Verification
 - [x] Complete Email Verification
 - [x] Update my Profile
-- [ ] Toggle Driving Mode
-- [ ] Report Location / Orientation
+- [x] Toggle Driving Mode
+- [x] Report Location / Orientation
 - [ ] Add Place
 - [ ] Edit Place
 - [ ] Delete Place
