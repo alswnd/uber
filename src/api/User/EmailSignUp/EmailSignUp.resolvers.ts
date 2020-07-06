@@ -5,8 +5,8 @@ import {
 } from "../../../types/graph";
 import User from "../../../entities/User";
 import createJWT from "../../../utils/create.JWT";
-import Verification from "src/entities/Verification";
-import { sendVerificationEmail } from "src/utils/sendEmail";
+import Verification from "../../../entities/Verification";
+import { sendVerificationEmail } from "../../../utils/sendEmail";
 
 const resolvers: Resolvers = {
   Mutation: {
