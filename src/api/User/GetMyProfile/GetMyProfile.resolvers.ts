@@ -1,9 +1,15 @@
-import { Resolvers } from "src/types/resolvers";
+import { Resolvers } from "../../../types/resolvers";
+import privateResolver from "../../../utils/privateResolver";
 
 const resolvers: Resolvers = {
   Query: {
-      // {req} in context
-    GetMyProfile: async (_, __, { req }) => {
+    /**
+     * we are not calling resolver starts with async.
+     * but calling privateResolver.
+     * so if privateResolver not throw an error(if user exists),
+     * then privateResolver returns resolver starts with async.
+     */
+    GetMyProfile: privateResolver(async (_, __, { req }) => {
       const { user } = req;
 
       return {
@@ -11,7 +17,7 @@ const resolvers: Resolvers = {
         error: null,
         user,
       };
-    },
+    }),
   },
 };
 export default resolvers;
