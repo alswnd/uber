@@ -32,13 +32,21 @@ class App {
        * it can be used in all resolvers.ts by parameter context.
        */
       context: (req) => {
-        console.log(req);
+        // req.connection.context.currentUser
+
+        /**
+         * '= null' means giving default value to context
+         * '= {}' means giving default value to connection
+         * beacause error
+         */
+        const { connection: { context = null } = {} } = req;
 
         return {
           // request that contains user
           req: req.request,
           // pass pubSub in context to subsciber
           pubSub: this.pubSub,
+          context,
         };
       },
     });
