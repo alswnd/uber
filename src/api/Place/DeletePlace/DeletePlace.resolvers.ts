@@ -41,7 +41,7 @@ const resolvers: Resolvers = {
               error: "Place not found",
             };
           }
-        } catch {
+        } catch (error) {
           return {
             ok: false,
             error: error.message,
@@ -51,3 +51,5 @@ const resolvers: Resolvers = {
     ),
   },
 };
+
+export default resolvers;
