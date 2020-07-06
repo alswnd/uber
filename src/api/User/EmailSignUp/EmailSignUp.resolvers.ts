@@ -5,6 +5,8 @@ import {
 } from "../../../types/graph";
 import User from "../../../entities/User";
 import createJWT from "../../../utils/create.JWT";
+import Verification from "src/entities/Verification";
+import { sendVerificationEmail } from "src/utils/sendEmail";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -25,15 +27,40 @@ const resolvers: Resolvers = {
             token: null,
           };
         } else {
-          const newUser = await User.create({ ...args }).save();
+          const phoneVerification = await Verification.findOne({
+            payload: args.phoneNumber,
+            verified: true,
+          });
 
-          const token = createJWT(newUser.id);
+          if (phoneVerification) {
+            const newUser = await User.create({ ...args }).save();
 
-          return {
-            ok: true,
-            error: null,
-            token,
-          };
+            // if new user email exists, send email.
+            if (newUser.email) {
+              const emailVerification = await Verification.create({
+                payload: newUser.email,
+                target: "EMAIL",
+              });
+
+              await sendVerificationEmail(
+                newUser.fullName,
+                emailVerification.key
+              );
+            }
+            const token = createJWT(newUser.id);
+
+            return {
+              ok: true,
+              error: null,
+              token,
+            };
+          } else {
+            return {
+              ok: false,
+              error: "You have not verified your phone",
+              token: null,
+            };
+          }
         }
       } catch (error) {
         return {
