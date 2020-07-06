@@ -1,0 +1,4 @@
+type Subscription {
+  # get nearby drivers, and update
+  DriversSubscription: User
+}

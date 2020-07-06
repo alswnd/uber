@@ -1,4 +1,4 @@
-import { GraphQLServer } from "graphql-yoga";
+import { GraphQLServer, PubSub } from "graphql-yoga";
 import { NextFunction, Response } from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -8,8 +8,20 @@ import decodeJWT from "./utils/decode.JWT";
 
 class App {
   public app: GraphQLServer;
+  /**
+   * subscription
+   */
+  public pubSub: any;
 
   constructor() {
+    /**
+     * @PubSub is demo,
+     * so in production mode, should use @Redies or @Memcached
+     */
+    this.pubSub = new PubSub();
+    // prevent memory leak
+    this.pubSub.ee.setMaxListeners(99);
+
     this.app = new GraphQLServer({
       schema,
 
@@ -23,6 +35,8 @@ class App {
         return {
           // request that contains user
           req: req.request,
+          // pass pubSub in context to subsciber
+          pubSub: this.pubSub
         };
       },
     });
