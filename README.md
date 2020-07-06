@@ -21,7 +21,7 @@ Cloning Uber
 
 ### Private Resolvers:
 
-- [ ] Get my Profile
+- [x] Get my Profile
 - [ ] Verify Email
 - [ ] Update my Profile
 - [ ] Toggle Driving Mode
