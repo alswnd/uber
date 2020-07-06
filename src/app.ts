@@ -32,11 +32,13 @@ class App {
        * it can be used in all resolvers.ts by parameter context.
        */
       context: (req) => {
+        console.log(req);
+
         return {
           // request that contains user
           req: req.request,
           // pass pubSub in context to subsciber
-          pubSub: this.pubSub
+          pubSub: this.pubSub,
         };
       },
     });
