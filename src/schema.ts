@@ -15,7 +15,7 @@ const allTypes: GraphQLSchema[] = fileLoader(
 /**
  * same with @const allTypes.
  * we declared *.resolvers.ts to return a string.
- * @error string[] makes error. ??
+ * any[] : string[] makes error. ??
  */
 const allResolvers: any[] = fileLoader(
   path.join(__dirname, "./api/**/*.resolvers.*")
