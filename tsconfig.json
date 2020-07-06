@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
     "module": "commonjs",
     "target": "es5",
     "lib": ["es6", "dom", "esnext.asynciterable"],

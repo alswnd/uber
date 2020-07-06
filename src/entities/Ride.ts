@@ -64,7 +64,7 @@ class Ride extends BaseEntity {
   createdAt: string;
 
   @UpdateDateColumn()
-  updatedAt: String;
+  updatedAt: string;
 }
 
 export default Ride;

@@ -138,14 +138,14 @@ type User {
   # ! means required
   id: Int!
   email: String
-  veifiedEmail: Boolean!
+  verifiedEmail: Boolean!
   firstName: String!
   lastName: String!
   fullName: String
   age: Int
   password: String
   phoneNumber: String
-  veifiedPhoneNumber: Boolean!
+  verifiedPhoneNumber: Boolean!
   profilePhoto: String
   isDriving: Boolean!
   isRiding: Boolean!

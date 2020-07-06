@@ -102,7 +102,7 @@ class User extends BaseEntity {
   createdAt: string;
 
   @UpdateDateColumn()
-  updatedAt: String;
+  updatedAt: string;
 
   /**
    * @method fullName()

@@ -31,7 +31,7 @@ class Message extends BaseEntity {
   createdAt: string;
 
   @UpdateDateColumn()
-  updatedAt: String;
+  updatedAt: string;
 }
 
 export default Message;
