@@ -5,8 +5,8 @@ import {
 } from "../../../types/graph";
 import User from "../../../entities/User";
 import createJWT from "../../../utils/create.JWT";
-import Verification from "../../../entities/Verification";
 import { sendVerificationEmail } from "../../../utils/sendEmail";
+import Verification from "../../../entities/Verification";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -35,12 +35,12 @@ const resolvers: Resolvers = {
           if (phoneVerification) {
             const newUser = await User.create({ ...args }).save();
 
-            // if new user email exists, send email.
+            // if new user email exists, send email. and SAVE.
             if (newUser.email) {
               const emailVerification = await Verification.create({
                 payload: newUser.email,
                 target: "EMAIL",
-              });
+              }).save();
 
               await sendVerificationEmail(
                 newUser.fullName,
