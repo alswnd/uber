@@ -11,8 +11,8 @@ const resolvers: Resolvers = {
       async (_, __, { req }): Promise<RequestEmailVerificationResponse> => {
         const user: User = req.user;
 
-        if (user.email) {
-          // if user has email
+        if (user.email && !user.verifiedEmail) {
+          // if user has email and user's email not verified
           try {
             const oldVerification = await Verification.findOne({
               payload: user.email,
