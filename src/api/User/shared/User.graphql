@@ -23,6 +23,7 @@ type User {
   # verifications: [Verification]
   ridesAsPassenger: [Ride]
   ridesAsDriver: [Ride]
+  places: [Place]
   createdAt: String!
   updatedAt: String
 }
