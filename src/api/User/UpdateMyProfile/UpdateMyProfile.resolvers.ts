@@ -5,6 +5,7 @@ import {
   UpdateMyProfileResponse,
 } from "../../../types/graph";
 import User from "../../../entities/User";
+import cleanNullArgs from "../../../utils/cleanNullArg";
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -15,17 +16,9 @@ const resolvers: Resolvers = {
         { req }
       ): Promise<UpdateMyProfileResponse> => {
         const user: User = req.user;
-        const notNull = {};
-
-        // exclude null value.
-        Object.keys(args).forEach((key) => {
-          if (args[key] !== null) {
-            notNull[key] = args[key];
-          }
-        });
+        const notNull = cleanNullArgs(args);
 
         try {
-
           // for password updating hashed
           if (args.password !== null) {
             user.password = args.password;
