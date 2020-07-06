@@ -29,7 +29,7 @@ Cloning Uber
 - [x] Report Location / Orientation
 - [x] Add Place
 - [x] Edit Place
-- [ ] Delete Place
+- [x] Delete Place
 - [ ] Get My Places
 - [ ] See Nearby Drivers
 - [ ] Subscribe to Nearby Drivers
