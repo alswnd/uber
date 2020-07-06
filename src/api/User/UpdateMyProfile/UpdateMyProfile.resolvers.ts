@@ -25,6 +25,19 @@ const resolvers: Resolvers = {
         });
 
         try {
+
+          // for password updating hashed
+          if (args.password !== null) {
+            user.password = args.password;
+            user.save();
+          }
+
+          /**
+           * it doesnt have user instance.
+           * it just find user with id and update object @notNull
+           * so @BeforeInsert and @BeforeUpdate not called,
+           * causing password not hashed.
+           */
           await User.update({ id: user.id }, { ...notNull });
 
           return {
