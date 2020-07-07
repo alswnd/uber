@@ -26,6 +26,7 @@ type Mutation {
   DeletePlace(placeId: Int!): DeletePlaceResponse!
   EditPlace(placeId: Int!, name: String, isFav: Boolean): EditPlaceResponse!
   RequestRide(pickUpAddress: String!, pickUpLat: Float!, pickUpLng: Float!, dropOffAddress: String!, dropOffLat: Float!, dropOffLng: Float!, price: Float!, distance: String!, duration: String!): RequestRideResponse!
+  UpdateRideStatus(rideId: Int!, status: StatusOptions!): UpdateRideStatusResponse
   CompleteEmailVerification(key: String!): CompleteEmailVerificationResoponse!
   CompletPhoneNumberVerification(phoneNumber: String!, key: String!): CompletPhoneNumberVerificationResponse!
   EmailSignIn(email: String!, password: String!): EmailSignInResponse!
@@ -57,7 +58,6 @@ type GetMyPlacesResponse {
 type Query {
   GetMyPlaces: GetMyPlacesResponse!
   GetNearbyRide: GetNearbyRideResponse!
-  GetNearbyRide: GetNearbyRideResponse!
   GetMyProfile: GetMyProfileResponse!
   GetNearbyDrivers: GetNearbyDriversResponse!
 }
@@ -78,9 +78,12 @@ type GetNearbyRideResponse {
   ok: Boolean!
   error: String
   ride: Ride
-  ok: Boolean!
-  error: String
-  ride: Ride
+}
+
+type Subscription {
+  NearbyRideSubscription: Ride
+  # get nearby drivers, and update
+  DriversSubscription: User
 }
 
 type RequestRideResponse {
@@ -107,6 +110,20 @@ type Ride {
   updatedAt: String
 }
 
+type UpdateRideStatusResponse {
+  ok: Boolean!
+  error: String
+}
+
+# if other string input, error occured
+enum StatusOptions {
+  ACCEPTED
+  FINISHED
+  CANCELED
+  REQUESTING
+  ONROUTE
+}
+
 type CompleteEmailVerificationResoponse {
   ok: Boolean!
   error: String
@@ -117,11 +134,6 @@ type CompletPhoneNumberVerificationResponse {
   error: String
   # for existing user
   token: String
-}
-
-type Subscription {
-  # get nearby drivers, and update
-  DriversSubscription: User
 }
 
 type EmailSignInResponse {
