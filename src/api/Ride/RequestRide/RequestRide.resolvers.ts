@@ -17,8 +17,8 @@ const resolvers: Resolvers = {
       ): Promise<RequestRideResponse> => {
         const user: User = req.user;
 
-        // user is not riding now
-        if (!user.isRiding) {
+        // user is not riding and driving now
+        if (!user.isRiding && !user.isDriving) {
           try {
             // create new ride, dont forget put user
             const ride = await Ride.create({ ...args, passenger: user }).save();
@@ -43,7 +43,7 @@ const resolvers: Resolvers = {
         } else {
           return {
             ok: false,
-            error: "You are already riding",
+            error: `You are already riding == ${user.isRiding} or driving == ${user.isDriving}`,
             ride: null,
           };
         }

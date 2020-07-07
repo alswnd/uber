@@ -49,10 +49,13 @@ const resolvers: Resolvers = {
                 user.save();
 
                 // create chat room when driver accept a Ride
-                await Chat.create({
+                const chat = await Chat.create({
                   driver: user,
                   passenger: ride.passenger,
                 }).save();
+
+                ride.chat = chat;
+                ride.save();
               }
 
               // if requested status is other else,

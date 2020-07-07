@@ -6,9 +6,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  OneToOne,
+  JoinColumn,
 } from "typeorm";
 import { rideStatus } from "src/types/types";
 import User from "./User";
+import Chat from "./Chat";
 
 @Entity()
 class Ride extends BaseEntity {
@@ -66,6 +69,13 @@ class Ride extends BaseEntity {
 
   @Column({ nullable: true })
   driverId: number;
+
+  @Column({ nullable: true })
+  chatId: number;
+
+  @OneToOne((type) => Chat, (chat) => chat.ride, { nullable: true }) // when REQUESTING, there is no chat
+  @JoinColumn() // owner is Ride in relationship with chat
+  chat: Chat;
 
   @CreateDateColumn()
   createdAt: string;
