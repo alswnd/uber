@@ -17,22 +17,29 @@ const resolvers: Resolvers = {
 
           try {
             // getRepository : we will get rides filtered
-            const rides = await getRepository(Ride).find({
+            const ride = await getRepository(Ride).findOne({
               status: "REQUESTING",
               pickUpLat: Between(lastLat - 0.05, lastLat + 0.05),
               pickUpLng: Between(lastLng - 0.05, lastLng + 0.05),
             });
-
-            return {
-              ok: true,
-              error: null,
-              rides,
-            };
+            if (ride) {
+              return {
+                ok: true,
+                error: null,
+                ride,
+              };
+            } else {
+              return {
+                ok: true,
+                error: null,
+                ride: null,
+              };
+            }
           } catch (error) {
             return {
               ok: false,
               error: error.message,
-              rides: null,
+              ride: null,
             };
           }
         } else {
@@ -40,7 +47,7 @@ const resolvers: Resolvers = {
           return {
             ok: false,
             error: "You are not a driver or not driving",
-            rides: null,
+            ride: null,
           };
         }
       }
