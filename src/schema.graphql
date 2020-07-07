@@ -89,6 +89,7 @@ type GetRideResponse {
 
 type Subscription {
   NearbyRideSubscription: Ride
+  RideStatusSubscription: Ride
   # get nearby drivers, and update
   DriversSubscription: User
 }

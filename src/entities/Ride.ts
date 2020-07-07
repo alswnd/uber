@@ -10,12 +10,6 @@ import {
 import { rideStatus } from "src/types/types";
 import User from "./User";
 
-const ACCEPTED = "ACCEPTED";
-const FINISHED = "FINISHED";
-const CANCELED = "CANCELED";
-const REQUESTING = "REQUESTING";
-const ONROUTE = "ONROUTE";
-
 @Entity()
 class Ride extends BaseEntity {
   @PrimaryGeneratedColumn()
@@ -23,8 +17,8 @@ class Ride extends BaseEntity {
 
   @Column({
     type: "text",
-    enum: [ACCEPTED, FINISHED, CANCELED, REQUESTING, ONROUTE],
-    default: REQUESTING,
+    enum: ["ACCEPTED", "FINISHED", "CANCELED", "REQUESTING", "ONROUTE"],
+    default: "REQUESTING",
   })
   status: rideStatus;
 
