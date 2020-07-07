@@ -17,6 +17,9 @@ const resolvers: Resolvers = {
       ): Promise<RequestRideResponse> => {
         const user: User = req.user;
 
+        // @todo
+        (user.isDriving = false), (user.isRiding = false);
+
         // user is not riding and driving now
         if (!user.isRiding && !user.isDriving) {
           try {
