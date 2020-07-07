@@ -1,14 +1,14 @@
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
 import User from "../../../entities/User";
-import { GetNearbyRidesResponse } from "../../../types/graph";
+import { GetNearbyRideResponse } from "../../../types/graph";
 import { getRepository, Between } from "typeorm";
 import Ride from "../../../entities/Ride";
 
 const resolvers: Resolvers = {
   Query: {
     GetNearbyRide: privateResolver(
-      async (_, __, { req }): Promise<GetNearbyRidesResponse> => {
+      async (_, __, { req }): Promise<GetNearbyRideResponse> => {
         const user: User = req.user;
 
         // if user driving
