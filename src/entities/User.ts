@@ -12,7 +12,6 @@ import {
   UpdateDateColumn,
   BeforeInsert,
   BeforeUpdate,
-  ManyToOne,
   OneToMany,
 } from "typeorm";
 import bcrypt from "bcrypt";
