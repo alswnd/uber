@@ -19,7 +19,7 @@ const resolvers: Resolvers = {
       async (
         _,
         args: UpdateRideStatusMutationArgs,
-        { req }
+        { req, pubSub }
       ): Promise<UpdateRideStatusResponse> => {
         const user: User = req.user;
 
@@ -57,6 +57,9 @@ const resolvers: Resolvers = {
               // and change ride's status
               ride.status = args.status;
               ride.save();
+
+              // publish to channel when ride update
+              pubSub.publish("rideUpdate", { RideStatusSubscription: ride });
 
               return {
                 ok: true,
