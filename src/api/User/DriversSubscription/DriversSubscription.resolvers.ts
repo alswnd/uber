@@ -12,7 +12,6 @@ const resolvers = {
        *
        * @param {function} asyncIteratorFn channel
        * @param {function} filterFn if filterFn return true, send result to user who is listening.
-       * @returns {instance} pubSub
        */
       subscribe: withFilter(
         (_, __, { pubSub }) => pubSub.asyncIterator("driverUpdate"),
@@ -29,6 +28,7 @@ const resolvers = {
           // get lastLat with userLastLat.
           const { lastLat: userLastLat, lastLng: userLastLng } = user;
 
+          // return if driver is nearby
           return (
             driverLastLat >= userLastLat - 0.05 &&
             driverLastLat <= userLastLat + 0.05 &&
