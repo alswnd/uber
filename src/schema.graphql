@@ -13,6 +13,14 @@ type Query {
   GetNearbyDrivers: GetNearbyDriversResponse!
 }
 
+type Subscription {
+  MessageSubscription: Message
+  NearbyRideSubscription: Ride
+  RideStatusSubscription: Ride
+  # get nearby drivers, and update
+  DriversSubscription: User
+}
+
 type SendChatMessageResponse {
   ok: Boolean!
   error: String
@@ -57,6 +65,7 @@ type Message {
   text: String!
   chat: Chat!
   user: User!
+  chatId: Int
   createdAt: String!
   updatedAt: String
 }
@@ -104,13 +113,6 @@ type GetRideResponse {
   ok: Boolean!
   error: String
   ride: Ride
-}
-
-type Subscription {
-  NearbyRideSubscription: Ride
-  RideStatusSubscription: Ride
-  # get nearby drivers, and update
-  DriversSubscription: User
 }
 
 type RequestRideResponse {
