@@ -1,0 +1,21 @@
+type RequestRideResponse {
+  ok: Boolean!
+  error: String
+  ride: Ride
+}
+
+type Mutation {
+  RequestRide(
+    # refer Ride entity
+    pickUpAddress: String!
+    pickUpLat: Float!
+    pickUpLng: Float!
+    dropOffAddress: String!
+    dropOffLat: Float!
+    dropOffLng: Float!
+    price: Float!
+    distance: String!
+    duration: String!
+    # passenger: User # not save in graphql
+  ): RequestRideResponse!
+}

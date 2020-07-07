@@ -24,6 +24,7 @@ class Ride extends BaseEntity {
   @Column({
     type: "text",
     enum: [ACCEPTED, FINISHED, CANCELED, REQUESTING, ONROUTE],
+    default: "ACCEPTED",
   })
   status: rideStatus;
 
@@ -57,7 +58,8 @@ class Ride extends BaseEntity {
   @ManyToOne((type) => User, (user) => user.ridesAsPassenger)
   passenger: User;
 
-  @ManyToOne((type) => User, (user) => user.ridesAsDriver)
+  // nullable : true => when requesting a ride, driver not assigned yet.
+  @ManyToOne((type) => User, (user) => user.ridesAsDriver, { nullable: true })
   driver: User;
 
   @CreateDateColumn()
