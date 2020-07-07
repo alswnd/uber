@@ -19,6 +19,7 @@ class App {
      * so in production mode, should use @Redies or @Memcached
      */
     this.pubSub = new PubSub();
+    
     // prevent memory leak
     this.pubSub.ee.setMaxListeners(99);
 
@@ -77,7 +78,7 @@ class App {
     const token = req.get("X-JWT");
 
     if (token) {
-      // this user object will pass through all middleware to final graphql server.
+      // this user object will pass through all middleware to finally graphql server.
       // because express is in graphql server.
       const user = await decodeJWT(token);
 
