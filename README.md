@@ -39,7 +39,7 @@ Cloning Uber
 - [x] Update to Ride Status
 - [x] Get Ride
 - [x] Subscribe to Ride Status
-- [ ] Create a Chat Room
+- [x] Create a Chat Room
 - [ ] Get Chat Room Messages
 - [ ] Subscribe to Chat Room Messages
 - [ ] Send a Chat Message
