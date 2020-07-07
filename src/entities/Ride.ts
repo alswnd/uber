@@ -24,7 +24,7 @@ class Ride extends BaseEntity {
   @Column({
     type: "text",
     enum: [ACCEPTED, FINISHED, CANCELED, REQUESTING, ONROUTE],
-    default: "ACCEPTED",
+    default: REQUESTING,
   })
   status: rideStatus;
 
@@ -55,12 +55,23 @@ class Ride extends BaseEntity {
   @Column({ type: "text" })
   duration: string;
 
+  /**
+   * this let typeorm automatically attach id without seeing database
+   * @how typeorm see passenger's foriegn key and show it to us.
+   * with this can avoid finding all object at first
+   */
+  @Column({ nullable: true })
+  passengerId: number;
+
   @ManyToOne((type) => User, (user) => user.ridesAsPassenger)
   passenger: User;
 
   // nullable : true => when requesting a ride, driver not assigned yet.
   @ManyToOne((type) => User, (user) => user.ridesAsDriver, { nullable: true })
   driver: User;
+
+  @Column({ nullable: true })
+  driverId: number;
 
   @CreateDateColumn()
   createdAt: string;
