@@ -7,7 +7,7 @@ import Ride from "../../../entities/Ride";
 
 const resolvers: Resolvers = {
   Query: {
-    GetNearbyRides: privateResolver(
+    GetNearbyRide: privateResolver(
       async (_, __, { req }): Promise<GetNearbyRidesResponse> => {
         const user: User = req.user;
 
