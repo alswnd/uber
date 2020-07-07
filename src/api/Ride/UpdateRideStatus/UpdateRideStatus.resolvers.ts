@@ -6,6 +6,7 @@ import {
   UpdateRideStatusResponse,
 } from "../../../types/graph";
 import Ride from "../../../entities/Ride";
+import Chat from "../../../entities/Chat";
 
 // ACCEPTED
 // FINISHED
@@ -30,10 +31,13 @@ const resolvers: Resolvers = {
             // if requested status is ACCEPTED
             if (args.status === "ACCEPTED") {
               // find ride with status REQUESTING
-              ride = await Ride.findOne({
-                id: args.rideId,
-                status: "REQUESTING",
-              });
+              ride = await Ride.findOne(
+                {
+                  id: args.rideId,
+                  status: "REQUESTING",
+                },
+                { relations: ["passenger"] }
+              );
 
               // if ride found
               if (ride) {
@@ -43,6 +47,12 @@ const resolvers: Resolvers = {
                 // user accepted Ride, so.. taken
                 user.isTaken = true;
                 user.save();
+
+                // create chat room when driver accept a Ride
+                await Chat.create({
+                  driver: user,
+                  passenger: ride.passenger,
+                }).save();
               }
 
               // if requested status is other else,
