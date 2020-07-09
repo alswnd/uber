@@ -1,6 +1,6 @@
 type GetMyProfileResponse {
     ok: Boolean!
-    error: String!
+    error: String
     user: User
 }
 
